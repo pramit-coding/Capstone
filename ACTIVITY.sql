@@ -49,3 +49,31 @@ WHERE Customer.Customer_City <> Salesman.Salesman_City;
 SELECT Orders.Order_No, Customer.Customer_Name
 FROM Orders
 JOIN Customer ON Orders.Customer_Id = Customer.Customer_ID;
+
+SELECT Customer.Customer_Name, Customer.Grade 
+FROM Orders
+JOIN Salesman ON Orders.Salesman_Id = Salesman.Salesman_Id
+JOIN Customer ON Orders.Customer_Id = Customer.Customer_Id
+WHERE Customer.Grade IS NOT NULL;
+
+SELECT Customer.Customer_Name,Customer.Customer_City,Salesman.Salesman_Name,Salesman.Commision
+FROM Customer 
+JOIN Salesman ON Customer.Salesman_Id = Salesman.Salesman_Id
+WHERE Salesman.Commision BETWEEN 10 AND 30;
+
+SELECT Orders.Order_No, Customer.Customer_Name, Salesman.Commision AS 'Commision%',
+Orders.Purchase_Amt * Salesman.Commision 
+FROM Orders
+JOIN Salesman ON Orders.Salesman_Id = Salesman.Salesman_Id
+JOIN Customer ON Orders.Customer_Id = Customer.Customer_Id
+WHERE Customer.Grade >= 200;
+
+SELECT * 
+FROM Customer
+JOIN Orders ON Orders.Customer_Id = Customer.Customer_Id
+WHERE Orders.Order_Date = '20/7/26';
+
+SELECT COUNT(*) 
+FROM Customer
+JOIN Salesman ON Customer.Customer_City <> Salesman.Salesman_City;
+
