@@ -23,7 +23,7 @@ SELECT * FROM Clients;
 SELECT * FROM Employees
 WHERE EMP_SALARY = 1099;
 
-SELECT * FROM Emplyees 
+SELECT * FROM Employees 
 WHERE EMP_DATE = '20/5/26';
 
 SELECT MIN(EMP_SALARY)
@@ -33,15 +33,51 @@ WHERE EMP_DATE = '20/5/26';
 SELECT MAX(EMP_SALARY)
 FROM Employees;
 
-SELECT * FROM Employees
-JOIN Clients ON Employees.EMP_AGE = Clients_AGE;
+SELECT * FROM Clients
+JOIN Employees ON Employees.EMP_AGE = Clients.Client_AGE;
 
 UPDATE Clients
 SET Client_NAME = 'Unknown'
 WHERE Client_ID = 4;
 
 UPDATE Clients 
-SET Client_Nam = 'High'
+SET Client_NAME = 'High'
 WHERE Client_ID = 4;
+ 
+ SELECT DISTINCT EMP_NAME FROM Employees;
 
+SELECT COUNT(*)
+FROM Clients;
 
+SELECT COUNT(*) 
+FROM Employees
+JOIN Clients ON Employees.EMP_AGE <> Clients.Client_AGE;
+
+SELECT * FROM Clients
+WHERE Client_Name LIKE 'b%';
+
+SELECT * FROM Employees
+WHERE EMP_NAME LIKE '%an%';
+
+CREATE TABLE Shipment ( Start TEXT, Location TEXT);
+
+INSERT INTO Shipment (Start, Location)
+VALUES ('Hyderbad','Newjersey'),
+('Las Vegas','Uncicorn'),
+('Mumbai','Delhi'),
+('Brisbane','New York'),
+('Hobart','Sydney');
+
+CREATE TABLE Reciever (Finish TEXT, Location TEXT);
+
+INSERT INTO Reciever (Finish, Location)
+VALUES ('Las Vegas','Unicorn'),
+('Brisbane','New4 York'),
+('Hobert','Sydne5y'),
+('Mumbai', 'Delhi'),
+('Hyderabad','Newjersey1');
+
+SELECT * FROM Shipment
+JOIN Reciever ON Shipment.Start = Reciever.Finish;
+
+#I swithced around the a with b and or with an
